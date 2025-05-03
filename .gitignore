@@ -1,0 +1,12 @@
+CV.md
+
+__*
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+.env
+
+Models
+*.log
