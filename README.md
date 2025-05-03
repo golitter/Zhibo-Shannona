@@ -47,9 +47,3 @@
 - 智能体、MCP：取决于大模型性能及大模型的某种偏好。大模型有动态评判标准，但是难以找到其评估范围。
 
 
-
-**参考**：
-
-- [【DeepSeek+LoRA+FastAPI】开发人员如何微调大模型并暴露接口给后端调用_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1R6P7eVEtd/?spm_id_from=333.1387.homepage.video_card.click)
-
-- 等
