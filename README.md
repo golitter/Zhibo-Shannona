@@ -1,6 +1,6 @@
 **目标**：微调大模型得到特定语气风格，使用RAG增强特定学校的学生规章制度信息。
 
-![](README.assets/SUSTnona.png)
+![](assets/SUSTnona.png)
 
 - 基座模型：deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B ([deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B at main (huggingface.co)](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main))
 
