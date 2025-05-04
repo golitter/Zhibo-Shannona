@@ -10,3 +10,4 @@ __pycache__/
 
 Models
 *.log
+/docs/总结.docx
