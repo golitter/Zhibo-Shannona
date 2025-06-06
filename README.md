@@ -1,3 +1,7 @@
+> 低代码微调和RAG项目的代码实现：[golitter/Zhibo-Shannona: 智博陕珂娜（Zhibo-Shannona）：伊雷娜对话特征微调和高校规章制度的RAG融合 (github.com)](https://github.com/golitter/Zhibo-Shannona)。由于微调效果不佳，这里以prompt代替微调，本项目重点放到RAG部分。readme底部有相关实现细节。
+>
+> 项目的虚拟环境使用pip和conda结合（？），故不再展示requirements.txt文件
+
 # 智博陕珂娜（Zhibo-Shannona） RAG智能助手
 
 1. 下载嵌入模型`BAAI/bge-large-zh-v1.5`到`./Models/`内
