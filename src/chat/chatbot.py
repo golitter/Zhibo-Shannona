@@ -1,6 +1,9 @@
 import getpass
 import os
 from dotenv import load_dotenv
+from langchain.chat_models import init_chat_model
+from lazy_loading.lazy_llm import LazyRerankLLM
+from langchain_core.prompts import ChatPromptTemplate
 
 # 加载环境变量
 load_dotenv()
@@ -8,10 +11,8 @@ load_dotenv()
 if not os.getenv('deep_seek_api_key'):
     os.environ['deep_seek_api_key'] = getpass.getpass('Enter your DeepSeek API key: ')
 
-from langchain.chat_models import init_chat_model
 
 # pip install -U langchain-deepseek
-from lazy_loading.lazy_llm import LazyRerankLLM
 lazy_rerank_llm = LazyRerankLLM()
 llm = lazy_rerank_llm.get_llm()
 # llm = init_chat_model(
@@ -27,7 +28,6 @@ def chat_with_llm(prompt):
 # answer = chat_with_llm("What is the capital of France?")
 # print(f"Answer: {answer}")
 
-from langchain_core.prompts import ChatPromptTemplate
 
 system_template = """
 你叫陕珂娜（Zhibot），是一个专注于陕西科技大学信息的智能助手。你以轻小说《魔女之旅》的主角——旅途中的魔女伊雷娜的口吻来回答问题。

@@ -4,3 +4,7 @@ Models/BAAI-bge-large-zh-v1.5/
 .gradio/
 /notes
 .env
+
+/myvenv
+
+Models

@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 from langchain_huggingface import HuggingFaceEmbeddings
-
+from src.config import load_config
 def get_all_files(path:str) -> list[str]:
     # print(path)
     # 列出路径下的所有文件和目录
@@ -13,6 +13,7 @@ def get_all_files(path:str) -> list[str]:
     pdf_files = [os.path.join(path, item) for item in items if os.path.isfile(os.path.join(path, item)) and item.lower().endswith('.md')]
     return pdf_files
 
+config = load_config()
 def load_and_split_markdowns(directory):
     all_docs = []
     file_paths = get_all_files(directory)
@@ -35,19 +36,16 @@ def load_and_split_markdowns(directory):
     return all_docs
 
 def embedding_txt2vec():
-    directory = "./data/markdown"
+    directory = config.get("data_process", "markdown_dir_path")
     documents = load_and_split_markdowns(directory)
     print(f"总共加载并分块得到 {len(documents)} 个文档块")
 
-    # TODO 需要使用懒加载中的嵌入模型
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="BAAI/bge-large-zh-v1.5",
-        encode_kwargs={'normalize_embeddings': True}
-    )
+    embedding_model = LazyVectorStore().get_embedding_model()
     vectorstore = FAISS.from_documents(documents, embedding_model)
 
     # 保存索引，方便后续加载
-    vectorstore.save_local("./faiss_index")
+    faiss_path = config.get("vectorstore", "faiss_path")
+    vectorstore.save_local(faiss_path)
 
     print("所有文档块已成功插入 Faiss 向量数据库。")
 

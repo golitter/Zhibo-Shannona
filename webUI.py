@@ -1,5 +1,5 @@
 import gradio as gr
-from ragmemory import rag_chain_with_memory
+from src.chat.ragmemory import rag_chain_with_memory
 
 
 def chat(message, history):

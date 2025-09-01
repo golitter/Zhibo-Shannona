@@ -2,6 +2,7 @@
 
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
+from src.config import load_config
 
 class LazyVectorStore:
     _instance = None
@@ -12,7 +13,15 @@ class LazyVectorStore:
             cls._instance._initialized = False
         return cls._instance
 
-    def __init__(self, faiss_path="./faiss_index", embedding_model_name="./Models/BAAI-bge-large-zh-v1.5"):
+    def __init__(self, faiss_path=None, embedding_model_name=None):
+        config = load_config()
+        if faiss_path == None:
+            faiss_path = config.get("vectorstore", "faiss_path")
+            print("使用默认 FAISS 路径:", faiss_path)
+
+        if embedding_model_name == None:
+            embedding_model_name = config.get("embedding", "BLZ_model_path")
+            print("使用默认嵌入模型路径:", embedding_model_name)
         # from huggingface_hub import snapshot_download
 
         # snapshot_download(repo_id="BAAI/bge-large-zh-v1.5", local_dir="./Models/BAAI-bge-large-zh-v1.5", allow_patterns=["*.json", "*.bin", "*.txt"], force_download=True)

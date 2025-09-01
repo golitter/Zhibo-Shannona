@@ -1,7 +1,11 @@
 from docling.document_converter import DocumentConverter
 import os
 from tqdm import tqdm
+from src.config import load_config
 
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+
+config = load_config()
 def get_all_files(path:str) -> list[str]:
     # print(path)
     # 列出路径下的所有文件和目录
@@ -23,9 +27,10 @@ def pdfs_to_markdown(pdf_file_paths:list[str], to_dir:str) -> None:
             f.write(markdown_content)
 
 if __name__ == '__main__':
-    main_directory = './data/pdf/'
+    pdf_main_directory = config.get("data_process", "pdf_dir_path")
     print('正在查找PDF文件...')
-    pdf_files = get_all_files(main_directory)
+    pdf_files = get_all_files(pdf_main_directory)
+    # print(pdf_files)
     print(f'找到{len(pdf_files)}个PDF文件')
-    target_directory = './data/markdown/'
-    pdfs_to_markdown(pdf_files, target_directory)
+    markdown_target_directory = config.get("data_process", "markdown_dir_path")
+    pdfs_to_markdown(pdf_files, markdown_target_directory)

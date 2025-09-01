@@ -1,4 +1,4 @@
-from .live_sust_news import get_latest_school_news as get_school_news
+from src.tools.live_sust_news import get_latest_school_news as get_school_news
 from langchain.tools import tool
 
 @tool

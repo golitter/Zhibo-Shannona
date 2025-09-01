@@ -1,5 +1,5 @@
-from lazy_loading.lazy_vectorstore import LazyVectorStore
-from rag.reranker import single_block_structured_reranker
+from src.models.lazy_vectorstore import LazyVectorStore
+from src.models.reranker import single_block_structured_reranker
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
@@ -15,8 +15,8 @@ from tqdm import tqdm
 class RerankRetriever(BaseRetriever):
     vectorstore: Any 
     reranker: Any
-    top_k: int = 30
-    rerank_k: int = 10
+    top_k: int = 5
+    rerank_k: int = 2
     # def __init__(self, vectorstore, reranker, top_k=30, rerank_k=10):
     #     self.vectorstore = vectorstore
     #     self.reranker = reranker
@@ -60,11 +60,11 @@ manager = LazyVectorStore()
 vectorstore = manager.get_vectorstore()
 embedding_model = manager.get_embedding_model()
 
-def retrieve_relevant_docs(query, top_k=30):
+def retrieve_relevant_docs(query, top_k=5):
     docs = vectorstore.similarity_search(query, k=top_k)
     return docs
 
-def rerank_retrieve_relevant_docs(query:str, docs:list[Document], top_k=30, rerank_k=10):
+def rerank_retrieve_relevant_docs(query:str, docs:list[Document], top_k=5, rerank_k=2):
     with ThreadPoolExecutor() as executor:
         futures_to_doc = {}
         for doc in docs:

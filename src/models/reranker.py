@@ -1,6 +1,6 @@
-from lazy_loading.lazy_llm import LazyRerankLLM
+from src.models.lazy_llm import LazyRerankLLM
 from langchain_core.prompts import ChatPromptTemplate
-from utils.prompts import RerankingPrompt
+from src.prompts import RerankingPrompt
 lazy_rerank_llm = LazyRerankLLM()
 llm = lazy_rerank_llm.get_llm()
 

@@ -66,7 +66,7 @@ class LazyRerankLLM:
     def __init__(
         self,
         model_provider='openai',
-        model='qwen-max',
+        model='qwen-max-latest', # 使用免费额度 https://bailian.console.aliyun.com/?tab=model#/model-market/detail/qwen-max?modelGroup=qwen-max
         base_url='https://dashscope.aliyuncs.com/compatible-mode/v1',
         env_key='DASHSCOPE_API_KEY',
         max_retries=3,
