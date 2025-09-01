@@ -2,7 +2,7 @@ import getpass
 import os
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
-from lazy_loading.lazy_llm import LazyRerankLLM
+from src.models.lazy_llm import LazyRerankLLM
 from langchain_core.prompts import ChatPromptTemplate
 
 # 加载环境变量
@@ -41,6 +41,7 @@ system_template = """
 prompt_template = ChatPromptTemplate.from_messages(
     [("system", system_template), ("user", "{text}")]
 )
-prompt = prompt_template.invoke({"text": "什么是陕西科技大学？"})
-response = llm.invoke(prompt)
-print(response.content)
+if __name__ == "__main__":
+    prompt = prompt_template.invoke({"text": "什么是陕西科技大学？"})
+    response = llm.invoke(prompt)
+    print(response.content)
