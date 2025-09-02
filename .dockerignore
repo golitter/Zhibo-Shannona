@@ -1,0 +1,11 @@
+/myvenv
+__pycache__/
+.git
+.gitignore
+README.md
+Dockerfile
+/images
+
+.gradio/
+.env
+

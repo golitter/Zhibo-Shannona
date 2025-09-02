@@ -4,6 +4,7 @@ langchain-community
 langchain-openai
 sentence-transformers
 docling
+docling-parse
 faiss-cpu
 langchain-deepseek
 fastapi
