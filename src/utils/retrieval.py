@@ -17,7 +17,7 @@ class RerankRetriever(BaseRetriever):
     reranker: Any
     top_k: int = 5
     rerank_k: int = 2
-    # def __init__(self, vectorstore, reranker, top_k=30, rerank_k=10):
+    # def __init__(self, vectorstore, reranker, top_k=5, rerank_k=2):
     #     self.vectorstore = vectorstore
     #     self.reranker = reranker
     #     self.top_k = top_k

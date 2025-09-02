@@ -1,10 +1,14 @@
 from src.models.lazy_llm import LazyRerankLLM
 from langchain_core.prompts import ChatPromptTemplate
-from src.prompts import RerankingPrompt
+from src.config import load_prompt_templates
+
+custom_prompt_templates = load_prompt_templates()
+
 lazy_rerank_llm = LazyRerankLLM()
 llm = lazy_rerank_llm.get_llm()
 
-system_prompt_rerank_single_block = RerankingPrompt.system_prompt_rerank_single_block
+system_prompt_rerank_single_block = custom_prompt_templates.get('reranking_prompt', {}).get('system_prompt_rerank_single_block')
+user_prompt_rerank_single_block = custom_prompt_templates.get('reranking_prompt', {}).get('user_prompt_rerank_single_block')
 prompt_template = ChatPromptTemplate.from_messages(
     [("system", system_prompt_rerank_single_block), ("user", "你收到的查询和文本块如下：\n\
 查询：{query}\n\

@@ -7,6 +7,7 @@ from src.models.embedding_model import load_bge_large_zh_v15
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
 def setup():
+
     print("[1] BAAI/bge-large-zh-v1.5 安装")
     load_bge_large_zh_v15()
 
@@ -21,6 +22,11 @@ def setup():
 
     print("[3] Markdown 转 Vector")
     embedding_txt2vec()
+
+    print("[4] LLM Chat 初始化")
+    from src.chat.chatbot import prompt_template
+    from src.chat.ragchatbot import rag_qa_chain
+    from src.chat.ragmemory import rag_chain_with_memory
 
 if __name__ == "__main__":
     setup()
