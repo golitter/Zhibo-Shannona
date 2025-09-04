@@ -18,6 +18,7 @@ embedding_model = manager.get_embedding_model()
 Zhibo_Shannona_system_template = custom_prompt_templates.get('zhibo_shannona_prompt', {}).get('rag_memory_system_prompt')
 
 
+## RerankRetriever 
 custom_retriever = RerankRetriever(
     vectorstore=vectorstore,
     reranker=single_block_structured_reranker,
@@ -38,6 +39,7 @@ memory = ConversationSummaryMemory(
 )
 
 
+## JudgeOfRetriever
 # 判断query是否需要进行文本检索
 decision_rerank_prompt = PromptTemplate(
     template=custom_prompt_templates.get('reranking_prompt', {}).get('decision_rerank_prompt'),
