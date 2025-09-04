@@ -6,10 +6,10 @@
 
 1. 设置`.env`中的密钥。本项目使用deepseek-r1和qwen系列
 
-```.env
-deep_seek_api_key=<ds_api_key>
-DASHSCOPE_API_KEY=<qwen_api_key>
-```
+   ```.env
+   deep_seek_api_key=<ds_api_key>
+   DASHSCOPE_API_KEY=<qwen_api_key>
+   ```
 
 2. 安装依赖
 
