@@ -16,8 +16,10 @@
    ```shell
    python -m venv myvenv
    source ./myvenv/bin/activate
-pip install -r requirements.txt
+   pip install -r requirements.txt
    ```
+
+   
 
 3. 检查相关配置
 
