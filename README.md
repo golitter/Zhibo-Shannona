@@ -2,7 +2,7 @@
 
 本项目基 **RAG** 技术，融入《魔女之旅》中伊雷娜的对话风格，实现高校规章问答与个性化对话。
 
-![img](images/5531d9e3a37520b5317e2be16688d788.png)
+![img](images/f78d2c374921d36bce87acd1ea2da6b2.png)
 
 1. 设置`.env`中的密钥。本项目使用deepseek-r1和qwen系列
 
